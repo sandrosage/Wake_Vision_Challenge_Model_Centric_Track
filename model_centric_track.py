@@ -94,7 +94,7 @@ model_checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
     mode='max', save_best_only=True)
     
 #training
-model.fit(train_ds, epochs=epochs, validation_data=val_ds, callbacks=[model_checkpoint_callback])
+model.fit(train_ds, steps_per_epoch=1, epochs=epochs, validation_data=val_ds, callbacks=[model_checkpoint_callback])
 
 #Post Training Quantization (PTQ)
 model = tf.keras.models.load_model(model_name + ".tf")
@@ -132,7 +132,7 @@ for image, label in test_ds :
        input_data = tf.dtypes.cast(image, tf.uint8)
        interpreter.set_tensor(input['index'], input_data)
        interpreter.invoke()
-       if label.numpy().argmax() == interpreter.get_tensor(output['index']).argmax() :
+       if label.numpy() == interpreter.get_tensor(output['index']).argmax() :
            correct = correct + 1
        else :
            wrong = wrong + 1
