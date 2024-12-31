@@ -15,7 +15,7 @@ Install [docker engine](https://docs.docker.com/engine/install/).
 Run the following command inside the directory in which you cloned this repository.
 
 ```
-sudo docker run -it --rm -v $PWD:/tmp -w /tmp wake_vision_challenge/tensorflow python model_centric_track.py
+sudo docker run --gpus all -it --rm -v $PWD:/tmp -w /tmp andregara/wake_vision_challenge python model_centric_track.py
 ```
 
 It trains the [ColabNAS](https://github.com/harvard-edge/Wake_Vision/blob/main/experiments/comprehensive_model_architecture_experiments/wake_vision_quality/k_8_c_5.py) model, a state-of-the-art person detection model, on the Wake Vision dataset to get you started. 
@@ -31,7 +31,7 @@ Install [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-nati
 Run the following command inside the directory in which you cloned this repository.
 
 ```
-sudo docker run -it --rm -v $PWD:/tmp -w /tmp wake_vision_challenge/tensorflow-gpu python model_centric_track.py
+sudo docker run --gpus all -it --rm -v $PWD:/tmp -w /tmp andregara/wake_vision_challenge:gpu python model_centric_track.py
 ```
 
 It trains the [ColabNAS](https://github.com/harvard-edge/Wake_Vision/blob/main/experiments/comprehensive_model_architecture_experiments/wake_vision_quality/k_8_c_5.py) model, a state-of-the-art person detection model, on the Wake Vision dataset to get you started. 
