@@ -15,7 +15,7 @@ Install [docker engine](https://docs.docker.com/engine/install/).
 Run the following command inside the directory in which you cloned this repository.
 
 ```
-sudo docker run --gpus all -it --rm -v $PWD:/tmp -w /tmp andregara/wake_vision_challenge python model_centric_track.py
+sudo docker run --gpus all -it --rm -v $PWD:/tmp -w /tmp andregara/wake_vision_challenge:cpu python model_centric_track.py
 ```
 
 It trains the [ColabNAS](https://github.com/harvard-edge/Wake_Vision/blob/main/experiments/comprehensive_model_architecture_experiments/wake_vision_quality/k_8_c_5.py) model, a state-of-the-art person detection model, on the Wake Vision dataset to get you started. 
