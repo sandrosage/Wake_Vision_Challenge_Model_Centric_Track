@@ -1,6 +1,6 @@
 # Model-Centric Track
 
-This is the official GitHub of the **Model-Centric Track** of the Wake Vision Challenge (TBD: link to the website challenge).
+This is the official GitHub of the **Model-Centric Track** of the [Wake Vision Challenge](https://edgeai.modelnova.ai/challenges/details/1).
 
 It asks participants to **push the boundaries of tiny computer vision** by **innovating model architectures** to achieve **high test accuracy** while **minimizing resource usage**, leveraging the newly released [Wake Vision](https://wakevision.ai/), a person detection dataset.
 
