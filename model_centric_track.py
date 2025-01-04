@@ -10,7 +10,7 @@ model_name = 'wv_k_8_c_5'
 input_shape = (50,50,3)
 batch_size = 512
 learning_rate = 0.001
-epochs = 1
+epochs = 100
 
 #model architecture (with Quantization Aware Training - QAT)
 #Play with it!
