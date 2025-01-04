@@ -1,4 +1,4 @@
-# Model-Centric Track
+# Wake Vision Challenge: _Model-Centric Track_
 
 This is the official GitHub of the **Model-Centric Track** of the [Wake Vision Challenge](https://edgeai.modelnova.ai/challenges/details/1).
 
