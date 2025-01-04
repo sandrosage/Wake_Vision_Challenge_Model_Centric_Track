@@ -1,41 +1,87 @@
-# Wake Vision Challenge: _Model-Centric Track_
+# 🚀 **Model-Centric Track**
 
-This is the official GitHub of the **Model-Centric Track** of the [Wake Vision Challenge](https://edgeai.modelnova.ai/challenges/details/1).
+Welcome to the **Model-Centric Track** of the **Wake Vision Challenge**! 🎉
 
-It asks participants to **push the boundaries of tiny computer vision** by **innovating model architectures** to achieve **high test accuracy** while **minimizing resource usage**, leveraging the newly released [Wake Vision](https://wakevision.ai/), a person detection dataset.
+This track challenges you to **push the boundaries of tiny computer vision** by designing innovative model architectures for the newly released [Wake Vision Dataset](https://wakevision.ai/).
 
-Proposed model architectures will be evaluated over a **private test set**.
+🔗 **Learn More**: [Wake Vision Challenge Details](https://edgeai.modelnova.ai/challenges/details/1)
 
-## To Get Started
+---
 
-Install [docker engine](https://docs.docker.com/engine/install/).
+## 🌟 **Challenge Overview**
 
-### If you don't have a GPU 
+Participants are invited to:
 
-Run the following command inside the directory in which you cloned this repository.
+1. **Design novel model architectures** to achieve high accuracy.
+2. Optimize for **resource efficiency** (e.g., memory, inference time).
+3. Evaluate models on a **private test set** of the Wake Vision dataset.
 
-```
+You can modify the **model architecture** freely, but the **dataset must remain unchanged**. 🛠️
+
+---
+
+## 🛠️ **Getting Started**
+
+### Step 1: Install Docker Engine 🐋
+
+First, install Docker on your machine:
+- [Install Docker Engine](https://docs.docker.com/engine/install/).
+
+---
+
+### 💻 **Running Without a GPU**
+
+Run the following command inside the directory where you cloned this repository:
+
+```bash
 sudo docker run -it --rm -v $PWD:/tmp -w /tmp andregara/wake_vision_challenge:cpu python model_centric_track.py
 ```
 
-It trains the [ColabNAS](https://github.com/harvard-edge/Wake_Vision/blob/main/experiments/comprehensive_model_architecture_experiments/wake_vision_quality/k_8_c_5.py) model, a state-of-the-art person detection model, on the Wake Vision dataset to get you started. 
+- This trains the [ColabNAS model](https://github.com/harvard-edge/Wake_Vision/blob/main/experiments/comprehensive_model_architecture_experiments/wake_vision_quality/k_8_c_5.py), a state-of-the-art person detection model, on the Wake Vision dataset.
+- Modify the `model_centric_track.py` script to propose your own architecture.
 
-Then you can modify the "model_centric_track.py" script as you like, and propose your own model architecture.
+💡 **Note**: The first execution may take several hours as it downloads the full dataset (~365 GB).
 
-The first execution will require a lot of hours since it has to download the whole dataset on your machine (365 GB). 
+---
 
-### If you have a GPU
+### ⚡ **Running With a GPU**
 
-Install [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html) (if you have problems, [check your GPU drivers](https://ubuntu.com/server/docs/nvidia-drivers-installation)).
+1. Install the [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html).
+2. Verify your [GPU drivers](https://ubuntu.com/server/docs/nvidia-drivers-installation).
 
-Run the following command inside the directory in which you cloned this repository.
+Run the following command inside the directory where you cloned this repository:
 
-```
+```bash
 sudo docker run --gpus all -it --rm -v $PWD:/tmp -w /tmp andregara/wake_vision_challenge:gpu python model_centric_track.py
 ```
 
-It trains the [ColabNAS](https://github.com/harvard-edge/Wake_Vision/blob/main/experiments/comprehensive_model_architecture_experiments/wake_vision_quality/k_8_c_5.py) model, a state-of-the-art person detection model, on the Wake Vision dataset to get you started. 
+- This trains the [ColabNAS model](https://github.com/harvard-edge/Wake_Vision/blob/main/experiments/comprehensive_model_architecture_experiments/wake_vision_quality/k_8_c_5.py) on the Wake Vision dataset.
+- Modify the `model_centric_track.py` script to design your own model architecture.
 
-Then you can modify the "model_centric_track.py" script as you like, and propose your own model architecture.
+💡 **Note**: The first execution may take several hours as it downloads the full dataset (~365 GB).
 
-The first execution will require a lot of hours since it has to download the whole dataset on your machine (365 GB). 
+---
+
+## 🎯 **Tips for Success**
+
+- **Focus on Model Innovation**: Experiment with architecture design, layer configurations, and optimization techniques.
+- **Stay Efficient**: Resource usage is critical—consider model size, inference time, and memory usage.
+- **Collaborate**: Join the [community discussions](#) to exchange ideas and insights!
+
+---
+
+## 📚 **Resources**
+
+- [ColabNAS Model Documentation](https://github.com/harvard-edge/Wake_Vision)
+- [Docker Documentation](https://docs.docker.com/)
+- [Wake Vision Dataset](https://wakevision.ai/)
+
+---
+
+## 📞 **Contact Us**
+
+Have questions or need help? Reach out by filing a GitHub issue.
+
+---
+
+🌟 **Happy Innovating and Good Luck!** 🌟
