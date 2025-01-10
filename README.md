@@ -14,7 +14,7 @@ Participants are invited to:
 
 1. **Design novel model architectures** to achieve high accuracy.
 2. Optimize for **resource efficiency** (e.g., memory, inference time).
-3. Evaluate models on a **private test set** of the Wake Vision dataset.
+3. Evaluate models on the **public test set** of the Wake Vision dataset.
 
 You can modify the **model architecture** freely, but the **dataset must remain unchanged**. 🛠️
 
