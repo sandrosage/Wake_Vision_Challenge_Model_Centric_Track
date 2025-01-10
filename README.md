@@ -72,7 +72,7 @@ sudo docker run --gpus all -it --rm -v $PWD:/tmp -w /tmp andregara/wake_vision_c
 
 ## 📚 **Resources**
 
-- [ColabNAS Model Documentation](https://github.com/harvard-edge/Wake_Vision)
+- [ColabNAS Model Documentation](https://github.com/AndreaMattiaGaravagno/ColabNAS)
 - [Docker Documentation](https://docs.docker.com/)
 - [Wake Vision Dataset](https://wakevision.ai/)
 
