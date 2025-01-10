@@ -66,7 +66,7 @@ sudo docker run --gpus all -it --rm -v $PWD:/tmp -w /tmp andregara/wake_vision_c
 
 - **Focus on Model Innovation**: Experiment with architecture design, layer configurations, and optimization techniques.
 - **Stay Efficient**: Resource usage is critical—consider model size, inference time, and memory usage.
-- **Collaborate**: Join the [community discussions](#) to exchange ideas and insights!
+- **Collaborate**: Join the community discussions on [Discord](https://discord.com/channels/803180012572114964/1323721491736432640) to exchange ideas and insights!
 
 ---
 
@@ -80,7 +80,7 @@ sudo docker run --gpus all -it --rm -v $PWD:/tmp -w /tmp andregara/wake_vision_c
 
 ## 📞 **Contact Us**
 
-Have questions or need help? Reach out by filing a GitHub issue.
+Have questions or need help? Reach out on [Discord](https://discord.com/channels/803180012572114964/1323721491736432640).
 
 ---
 
