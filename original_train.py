@@ -7,7 +7,7 @@ model_name = 'wv_k_8_c_5'
 
 #some hyperparameters 
 #Play with them!
-input_shape = (50,50,3)
+input_shape = (80,80,3)
 batch_size = 512
 learning_rate = 0.001
 epochs = 100
@@ -98,42 +98,3 @@ model.fit(train_ds, epochs=epochs, validation_data=val_ds, callbacks=[model_chec
 
 #Post Training Quantization (PTQ)
 model = tf.keras.models.load_model(model_name + ".tf")
-
-def representative_dataset():
-    for data in train_ds.rebatch(1).take(150) :
-        yield [tf.dtypes.cast(data[0], tf.float32)]
-
-converter = tf.lite.TFLiteConverter.from_keras_model(model)
-converter.optimizations = [tf.lite.Optimize.DEFAULT]
-converter.representative_dataset = representative_dataset
-converter.target_spec.supported_ops = [tf.lite.OpsSet.TFLITE_BUILTINS_INT8]
-converter.inference_input_type = tf.uint8 
-converter.inference_output_type = tf.uint8
-tflite_quant_model = converter.convert()
-
-with open(model_name + ".tflite", 'wb') as f:
-    f.write(tflite_quant_model)
-    
-#Test quantized model
-interpreter = tf.lite.Interpreter(model_name + ".tflite")
-interpreter.allocate_tensors()
-
-output = interpreter.get_output_details()[0]  # Model has single output.
-input = interpreter.get_input_details()[0]  # Model has single input.
-
-correct = 0
-wrong = 0
-
-for image, label in test_ds :
-    # Check if the input type is quantized, then rescale input data to uint8
-    if input['dtype'] == tf.uint8:
-       input_scale, input_zero_point = input["quantization"]
-       image = image / input_scale + input_zero_point
-       input_data = tf.dtypes.cast(image, tf.uint8)
-       interpreter.set_tensor(input['index'], input_data)
-       interpreter.invoke()
-       if label.numpy() == interpreter.get_tensor(output['index']).argmax() :
-           correct = correct + 1
-       else :
-           wrong = wrong + 1
-print(f"\n\nTflite model test accuracy: {correct/(correct+wrong)}\n\n")
