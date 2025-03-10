@@ -1,17 +1,27 @@
 import tensorflow as tf 
-from models import get_baseline_model
-from utils import get_augmentation, get_preprocessing, get_prep_augmentation
+from models import get_model_from_name
+from utils import get_augmentation
 import yaml
 from load_dataset import get_tf_datasets
+from argparse import ArgumentParser
+
+parser = ArgumentParser()
+parser.add_argument(
+    "--name",
+    required=True,
+    type=str,
+    help="Name of the model",
+    )
 
 print("START MODEL TRAINING ------------------------------")
+args = parser.parse_args()
 
-with open('config.yaml', 'r') as file:
+with open("config.yaml", 'r') as file:
     config = yaml.safe_load(file)
 
 input_shape = (config["res"], config["res"], 3)
 
-model = get_baseline_model(input_shape=input_shape, name=config["model_name"])
+model = get_model_from_name(name=args.name)
 #compile model
 opt = tf.keras.optimizers.Adam(learning_rate=config["lr"])
 
@@ -28,7 +38,7 @@ val_ds = val_ds.prefetch(tf.data.AUTOTUNE)
 test_ds = test_ds.prefetch(tf.data.AUTOTUNE)
 
 model_checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
-    filepath= model.name + ".tf",
+    filepath= "models/tf/" + model.name + ".tf",
     monitor='val_categorical_accuracy',
     mode='max', save_best_only=True)
 

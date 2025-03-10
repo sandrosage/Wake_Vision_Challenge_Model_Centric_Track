@@ -1,8 +1,7 @@
 res: 80
 batch_size: 512
 lr: 0.001
-epochs: 5
-model_name: wv_k_8_c_5
+epochs: 10
 ptq_batch_size: 150
 shuffle_buffer_size: 1000
 train_ds_path: wake_vision_tf/train
