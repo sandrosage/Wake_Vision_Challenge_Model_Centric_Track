@@ -165,6 +165,8 @@ datasets/
 wake_vision_tf/
 wake_vision_dataset/
 steps_per_epoch_train.py
+tmp*
+models/
 
 
 # PyCharm

@@ -14,9 +14,59 @@ def get_model_from_name(name: str):
     elif name == "own_baseline":
         return get_own_baseline_model(input_shape=(80,80,3), name=name)
     
+    elif name == "new_baseline":
+        return get_new_baseline_model(input_shape=(80,80,3), name=name)
+    
     else: 
         print("No valid name, use baseline again")
         return get_baseline_model(input_shape=(80,80,3), name=name)
+
+def get_new_baseline_model(input_shape: Tuple[int, int, int], name: str):
+    inputs = keras.Input(shape=input_shape)
+    #
+    x = keras.layers.SeparableConv2D(8, (3,3), padding='same')(inputs)
+    x = keras.layers.BatchNormalization()(x)
+    x = keras.layers.ReLU()(x)
+    #
+    x = keras.layers.MaxPooling2D((2,2))(x)
+    x = keras.layers.Conv2D(8, (3,3), padding='same')(x)
+    x = keras.layers.BatchNormalization()(x)
+    x = keras.layers.ReLU()(x)
+    #
+    x = keras.layers.MaxPooling2D((2,2))(x)
+    x = keras.layers.SeparableConv2D(16, (3,3), padding='same')(x)
+    x = keras.layers.BatchNormalization()(x)
+    x = keras.layers.ReLU()(x)
+    #
+    x = keras.layers.MaxPooling2D((2,2))(x)
+    x = keras.layers.Conv2D(16, (3,3), padding='same')(x)
+    x = keras.layers.BatchNormalization()(x)
+    x = keras.layers.ReLU()(x)
+    #
+    x = keras.layers.MaxPooling2D((2,2))(x)
+    x = keras.layers.SeparableConv2D(24, (3,3), padding='same')(x)
+    x = keras.layers.BatchNormalization()(x)
+    x = keras.layers.ReLU()(x)
+    #
+    x = keras.layers.MaxPooling2D((2,2))(x)
+    x = keras.layers.Conv2D(32, (3,3), padding='same')(x)
+    x = keras.layers.BatchNormalization()(x)
+    x = keras.layers.ReLU()(x)
+    #
+    x = keras.layers.MaxPooling2D((2,2))(x)
+    x = keras.layers.SeparableConv2D(64, (3,3), padding='same')(x)
+    x = keras.layers.BatchNormalization()(x)
+    x = keras.layers.ReLU()(x)
+    #
+    x = keras.layers.GlobalAveragePooling2D()(x)
+    #
+    x = keras.layers.Dense(47)(x)
+    x = keras.layers.BatchNormalization()(x)
+    x = keras.layers.ReLU()(x)
+    #
+    outputs = keras.layers.Dense(2)(x)
+
+    return keras.Model(inputs, outputs, name=name)
 
 def get_own_baseline_model(input_shape: Tuple[int, int, int], name: str):
     inputs = keras.Input(shape=input_shape)

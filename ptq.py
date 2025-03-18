@@ -24,8 +24,8 @@ print(f"Representative batch size: {config['ptq_batch_size']}")
 
 input_shape = (config["res"], config["res"], 3)
 
-model_name = "models/tf/" + args.name
-model = tf.keras.models.load_model(model_name + ".tf")
+model_name = args.name
+model = tf.keras.models.load_model("models/tf/" + model_name + ".tf")
 
 data_augmentation = get_augmentation()
 train_ds = get_single_tf_dataset(config["batch_size"], input_shape, config["train_ds_path"])
@@ -74,7 +74,7 @@ print(f"\n\nTflite model test accuracy: {correct/(correct+wrong)}\n\n")
 
 headers = ['name', 'size_KB', 'size_MB', 'test_acc']
 
-data = [[model_name, (os.path.getsize(model_name + ".tflite")/1000), (os.path.getsize(model_name + ".tflite")/1000000), (correct/(correct+wrong))]]
+data = [[model_name, (os.path.getsize("models/tflite/" + model_name + ".tflite")/1000), (os.path.getsize("models/tflite/" + model_name + ".tflite")/1000000), (correct/(correct+wrong))]]
 # Writing to a CSV file
 with open('output.csv', mode='a', newline='') as file:
     writer = csv.writer(file)
